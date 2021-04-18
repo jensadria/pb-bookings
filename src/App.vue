@@ -15,6 +15,10 @@
       <v-col cols="5" class="flex-grow-1">
         <v-card>
           <v-card-title> Bookings for {{ picker }} </v-card-title>
+          <tables-booked
+            v-for="table in tablesBooked"
+            :key="table.indexOf()"
+          ></tables-booked>
         </v-card>
       </v-col>
     </v-row>
@@ -22,11 +26,49 @@
 </template>
 
 <script>
+import TablesBooked from './components/TablesBooked.vue';
+
 export default {
   name: 'App',
-
+  components: { TablesBooked },
   data: () => ({
     picker: new Date().toISOString().substr(0, 10),
+    bookings: [
+      {
+        id: 1,
+        name: 'Jens',
+        date: new Date().toISOString().substr(0, 10),
+        start_time: new Date().getTime(),
+        table: ['2'],
+        comments: null,
+      },
+      {
+        id: 2,
+        name: 'Gary',
+        date: new Date().toISOString().substr(0, 10),
+        start_time: new Date().getTime(),
+        table: ['1'],
+        comments: null,
+      },
+      {
+        id: 1,
+        name: 'Jens',
+        date: new Date().toISOString().substr(0, 10),
+        start_time: new Date().getTime(),
+        table: ['1'],
+        comments: null,
+      },
+    ],
   }),
+  computed: {
+    tablesBooked() {
+      let arrayOfbookedTables = this.bookings
+        .map((booking) => booking.table)
+        .sort((a, b) => a - b)
+        .flat();
+
+      return [...new Set(arrayOfbookedTables)];
+    },
+  },
 };
 </script>
