@@ -15,9 +15,13 @@
       <v-col cols="5" class="flex-grow-1">
         <v-card>
           <v-card-title> Bookings for {{ picker }} </v-card-title>
+
           <tables-booked
             v-for="table in tablesBooked"
-            :key="table.indexOf()"
+            :key="table"
+            :table="table"
+            :bookings="bookings"
+            :today="picker"
           ></tables-booked>
         </v-card>
       </v-col>
@@ -39,6 +43,7 @@ export default {
         name: 'Jens',
         date: new Date().toISOString().substr(0, 10),
         start_time: new Date().getTime(),
+        end_time: null,
         table: ['2'],
         comments: null,
       },
@@ -47,15 +52,28 @@ export default {
         name: 'Gary',
         date: new Date().toISOString().substr(0, 10),
         start_time: new Date().getTime(),
+        end_time: null,
+
         table: ['1'],
         comments: null,
       },
       {
-        id: 1,
+        id: 3,
         name: 'Jens',
+        date: '2021-04-20',
+        start_time: new Date().getTime(),
+        end_time: null,
+
+        table: ['1'],
+        comments: null,
+      },
+      {
+        id: 4,
+        name: 'Baz',
         date: new Date().toISOString().substr(0, 10),
         start_time: new Date().getTime(),
-        table: ['1'],
+        end_time: null,
+        table: ['4'],
         comments: null,
       },
     ],
@@ -63,6 +81,7 @@ export default {
   computed: {
     tablesBooked() {
       let arrayOfbookedTables = this.bookings
+        .filter((booking) => booking.date === this.picker)
         .map((booking) => booking.table)
         .sort((a, b) => a - b)
         .flat();
