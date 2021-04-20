@@ -12,17 +12,19 @@
           </v-row>
         </v-card>
       </v-col>
-      <v-col cols="5" class="flex-grow-1">
+      <v-col class="flex-grow-1">
         <v-card>
           <v-card-title> Bookings for {{ picker }} </v-card-title>
-
-          <tables-booked
-            v-for="table in tablesBooked"
-            :key="table"
-            :table="table"
-            :bookings="bookings"
-            :today="picker"
-          ></tables-booked>
+          <v-row>
+            <tables-booked
+              class="flex pa-2"
+              v-for="table in tablesBooked"
+              :key="table"
+              :table="table"
+              :bookings="bookings"
+              :today="picker"
+            ></tables-booked>
+          </v-row>
         </v-card>
       </v-col>
     </v-row>
@@ -37,46 +39,6 @@ export default {
   components: { TablesBooked },
   data: () => ({
     picker: new Date().toISOString().substr(0, 10),
-    bookings: [
-      {
-        id: 1,
-        name: 'Jens',
-        date: new Date().toISOString().substr(0, 10),
-        start_time: new Date().getTime(),
-        end_time: null,
-        table: ['2'],
-        comments: null,
-      },
-      {
-        id: 2,
-        name: 'Gary',
-        date: new Date().toISOString().substr(0, 10),
-        start_time: new Date().getTime(),
-        end_time: null,
-
-        table: ['1'],
-        comments: null,
-      },
-      {
-        id: 3,
-        name: 'Jens',
-        date: '2021-04-20',
-        start_time: new Date().getTime(),
-        end_time: null,
-
-        table: ['1'],
-        comments: null,
-      },
-      {
-        id: 4,
-        name: 'Baz',
-        date: new Date().toISOString().substr(0, 10),
-        start_time: new Date().getTime(),
-        end_time: null,
-        table: ['4'],
-        comments: null,
-      },
-    ],
   }),
   computed: {
     tablesBooked() {
@@ -87,6 +49,12 @@ export default {
         .flat();
 
       return [...new Set(arrayOfbookedTables)];
+    },
+    test() {
+      return this.$store.state.test;
+    },
+    bookings() {
+      return this.$store.state.bookings;
     },
   },
 };
