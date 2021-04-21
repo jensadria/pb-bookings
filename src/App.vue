@@ -28,16 +28,18 @@
           ></tables-booked>
         </v-row>
       </v-card>
+      <calendar></calendar>
     </v-container>
   </v-app>
 </template>
 
 <script>
 import TablesBooked from './components/TablesBooked.vue';
+import Calendar from './components/Calendar.vue';
 
 export default {
   name: 'App',
-  components: { TablesBooked },
+  components: { TablesBooked, Calendar },
   data: () => ({
     picker: new Date().toISOString().substr(0, 10),
   }),
