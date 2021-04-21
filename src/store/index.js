@@ -60,6 +60,24 @@ const state = {
       table: ['20'],
       comments: null,
     },
+    {
+      id: 7,
+      name: 'McMuffin',
+      date: '2021-04-21',
+      start_time: '13:00',
+      end_time: null,
+      table: ['1'],
+      comments: null,
+    },
+    {
+      id: 7,
+      name: 'Shawarsha',
+      date: '2021-04-21',
+      start_time: '13:00',
+      end_time: null,
+      table: ['18'],
+      comments: null,
+    },
   ],
 };
 

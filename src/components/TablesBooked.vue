@@ -1,6 +1,6 @@
 <template>
-  <v-col cols="3">
-    <v-card elevation="5" class="pb-1 ma-3">
+  <v-col cols="2">
+    <v-card elevation="5" class="pb-1 ma-2">
       <v-card-title class="red darken-2 white--text pa-1"
         >Table {{ table }} - {{ gameType }}</v-card-title
       >
@@ -9,8 +9,18 @@
         class="pa-3 ma-3 blue lighten-4"
         v-for="booking in todaysBookingsForTable"
         :key="booking"
-        >{{ booking.name }} - {{ booking.start_time }}
-        {{ booking.end_time ? '-' : '' }} {{ booking.end_time }}
+        ><div class="flex d-flex">
+          <div
+            class="flex-grow-1
+"
+          >
+            {{ booking.name }}
+          </div>
+          <div>
+            {{ booking.start_time }} {{ booking.end_time ? '-' : '' }}
+            {{ booking.end_time }}
+          </div>
+        </div>
       </v-card>
     </v-card>
   </v-col>
