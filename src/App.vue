@@ -3,10 +3,11 @@
     <v-container class="mx-5 pa-5 d-flex">
       <v-card class="mx-3 pa-5">
         <form action="submit">
+          <v-text-field label="Name" hide-details="auto"></v-text-field>
           <v-text-field
-            label="Name"
-            :rules="rules"
-            hide-details="auto"
+            v-model="phoneNr"
+            label="Phone Number"
+            required
           ></v-text-field>
         </form>
         <v-card-actions
@@ -35,13 +36,18 @@
 
 <script>
 import TablesBooked from './components/TablesBooked.vue';
-import Calendar from './components/Calendar.vue';
 
 export default {
   name: 'App',
-  components: { TablesBooked, Calendar },
+  components: { TablesBooked },
   data: () => ({
     picker: new Date().toISOString().substr(0, 10),
+    name: '',
+    phoneNr: '',
+    emailRules: [
+      (v) => !!v || 'E-mail is required',
+      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    ],
   }),
   computed: {
     tablesBooked() {

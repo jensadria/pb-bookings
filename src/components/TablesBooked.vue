@@ -38,9 +38,10 @@ export default {
         .sort((a, b) => a.start_time - b.start_time);
     },
     gameType() {
-      if (this.table <= 5) return 'Snooker';
-      if (this.table >= 10 && this.table <= 23) return 'Pool';
-      return '';
+      const tableTypes = this.$store.state.tableTypes;
+      const table = tableTypes.find((x) => parseInt(x.nr) == this.table);
+
+      return table.game;
     },
   },
 };
