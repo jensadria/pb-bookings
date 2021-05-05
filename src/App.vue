@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-container class="mx-5 pa-5 d-flex" max-width="300">
-      <v-card class="mx-3 pa-5">
+    <v-container class="mx-5 pa-5 d-flex">
+      <v-card class="mx-3 pa-5" max-width="370">
         <form action="submit">
           <v-text-field label="Name" hide-details="auto"></v-text-field>
           <v-text-field
@@ -12,6 +12,7 @@
           <div>
             <p>Snooker</p>
             <v-btn-toggle
+              class="mb-3"
               v-model="tableNr"
               tile
               color="deep-blue accent-3"
@@ -25,6 +26,7 @@
             </v-btn-toggle>
             <p>Pool</p>
             <v-btn-toggle
+              class="flex-wrap mb-3"
               v-model="tableNr"
               tile
               color="deep-blue accent-3"
@@ -34,13 +36,13 @@
               <v-btn value="11">11</v-btn>
               <v-btn value="12">15</v-btn>
               <v-btn value="13">16</v-btn>
-              <v-btn value="14">17</v-btn>
-              <v-btn value="14">18</v-btn>
-              <v-btn value="14">19</v-btn>
-              <v-btn value="14">20</v-btn>
-              <v-btn value="14">21</v-btn>
-              <v-btn value="14">22</v-btn>
-              <v-btn value="14">23</v-btn>
+              <v-btn value="17">17</v-btn>
+              <v-btn value="18">18</v-btn>
+              <v-btn value="19">19</v-btn>
+              <v-btn value="20">20</v-btn>
+              <v-btn value="21">21</v-btn>
+              <v-btn value="22">22</v-btn>
+              <v-btn value="23">23</v-btn>
             </v-btn-toggle>
           </div>
         </form>
