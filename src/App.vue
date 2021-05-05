@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container class="mx-5 pa-5 d-flex">
+    <v-container class="mx-5 pa-5 d-flex" max-width="300">
       <v-card class="mx-3 pa-5">
         <form action="submit">
           <v-text-field label="Name" hide-details="auto"></v-text-field>
@@ -9,44 +9,38 @@
             label="Phone Number"
             required
           ></v-text-field>
-          <v-btn-toggle
-            v-model="chooseGame"
-            tile
-            color="deep-purple accent-3"
-            group
-          >
-            <v-btn value="Snooker">
-              Snooker
-            </v-btn>
-            <v-btn value="Pool">
-              Pool
-            </v-btn>
-            <v-btn value="APool">
-              A. Pool
-            </v-btn>
-          </v-btn-toggle>
-          <div v-if="chooseGame === 'Snooker'">
+          <div>
+            <p>Snooker</p>
             <v-btn-toggle
               v-model="tableNr"
               tile
-              color="deep-purple accent-3"
+              color="deep-blue accent-3"
               multiple
             >
-              <v-btn value="1">
-                1
-              </v-btn>
-              <v-btn value="2">
-                2
-              </v-btn>
-              <v-btn value="3">
-                3
-              </v-btn>
-              <v-btn value="4">
-                4
-              </v-btn>
-              <v-btn value="5">
-                5
-              </v-btn>
+              <v-btn value="1">1</v-btn>
+              <v-btn value="2">2</v-btn>
+              <v-btn value="3">3</v-btn>
+              <v-btn value="4">4</v-btn>
+              <v-btn value="5">5</v-btn>
+            </v-btn-toggle>
+            <p>Pool</p>
+            <v-btn-toggle
+              v-model="tableNr"
+              tile
+              color="deep-blue accent-3"
+              multiple
+            >
+              <v-btn value="10">10</v-btn>
+              <v-btn value="11">11</v-btn>
+              <v-btn value="12">15</v-btn>
+              <v-btn value="13">16</v-btn>
+              <v-btn value="14">17</v-btn>
+              <v-btn value="14">18</v-btn>
+              <v-btn value="14">19</v-btn>
+              <v-btn value="14">20</v-btn>
+              <v-btn value="14">21</v-btn>
+              <v-btn value="14">22</v-btn>
+              <v-btn value="14">23</v-btn>
             </v-btn-toggle>
           </div>
         </form>
@@ -119,3 +113,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.v-button-toggle {
+  flex-wrap: wrap;
+}
+</style>
