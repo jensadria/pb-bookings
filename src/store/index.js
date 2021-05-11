@@ -66,7 +66,7 @@ const state = {
       id: 4,
       name: 'John',
       date: '2021-04-20',
-      start_time: new Date().toISOString().substr(11, 5),
+      start_time: '13:00',
       end_time: null,
       table: ['5'],
       comments: null,
