@@ -176,13 +176,11 @@ export default {
 
       return [...new Set(arrayOfbookedTables)];
     },
-
+    test() {
+      return this.$store.state.test;
+    },
     bookings() {
       return this.$store.state.bookings;
-    },
-
-    timePicker() {
-      return this.$store.state.timePicker;
     },
   },
 };

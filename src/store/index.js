@@ -24,21 +24,6 @@ const state = {
     { nr: 22, game: 'Pool' },
     { nr: 23, game: 'Pool' },
   ],
-  timePicker: [
-    '10:00',
-    '10:15',
-    '10:30',
-    '10:45',
-    '11:00',
-    '11:15',
-    '11:30',
-    '11:45',
-    '12:00',
-    '12:15',
-    '12:30',
-    '12:45',
-    '13:00',
-  ],
   bookings: [
     {
       id: 1,
@@ -116,13 +101,6 @@ const state = {
   ],
 };
 
-const getters = {
-  getBookings(state) {
-    return state.tableTypes;
-  },
-};
-
 export default new Vuex.Store({
   state,
-  getters,
 });
