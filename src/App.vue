@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container class="mx-5 pa-3 d-flex">
-      <v-card class="mx-3 pa-5" max-width="370">
+      <v-card class="mx-3 pa-3" max-width="350">
         <v-date-picker
           v-model="picker"
           class="ma-5"
@@ -18,18 +18,10 @@
           <!-- START TIME PICKER -->
           <v-row>
             <v-col>
-              <v-select
-                :items="['10:00', '10.30']"
-                label="Start Time"
-                filled
-              ></v-select>
+              <v-select :items="times" label="Start Time" filled></v-select>
             </v-col>
             <v-col>
-              <v-select
-                :items="['10:00', '10.30']"
-                label="End Time"
-                filled
-              ></v-select>
+              <v-select :items="times" label="End Time" filled></v-select>
             </v-col>
           </v-row>
           <!-- END TIME PICKER -->
@@ -62,8 +54,11 @@
               <v-btn value="9">9</v-btn>
               <v-btn value="10">10</v-btn>
               <v-btn value="11">11</v-btn>
-              <v-btn value="12">15</v-btn>
-              <v-btn value="13">16</v-btn>
+              <v-btn value="12">12</v-btn>
+              <v-btn value="13">13</v-btn>
+              <v-btn value="14">14</v-btn>
+              <v-btn value="15">15</v-btn>
+              <v-btn value="16">16</v-btn>
               <v-btn value="17">17</v-btn>
               <v-btn value="18">18</v-btn>
               <v-btn value="19">19</v-btn>
@@ -141,6 +136,9 @@ export default {
     },
     bookings() {
       return this.$store.state.bookings;
+    },
+    times() {
+      return this.$store.state.times;
     },
   },
 };
