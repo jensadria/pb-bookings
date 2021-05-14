@@ -116,11 +116,9 @@ export default {
   }),
   computed: {
     formattedDate() {
-      let todaysDate = format(
-        new Date(this.picker.split('-').join(',')),
-        'EEEE, LLLL d'
-      );
-      return todaysDate;
+      let todaysDate = new Date(this.picker.split('-').join(','));
+
+      return format(todaysDate, 'EEEE, LLLL d');
     },
     tablesBooked() {
       let arrayOfbookedTables = this.bookings
