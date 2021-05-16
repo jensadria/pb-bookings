@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 import getters from './getters.js';
+import actions from './actions.js';
+import mutations from './mutations.js';
 
 const state = {
   tableTypes: [
@@ -28,7 +30,6 @@ const state = {
   ],
   bookings: [
     {
-      id: 1,
       name: 'Jens',
       date: new Date().toISOString().substr(0, 10),
       start_time: '10:00',
@@ -37,7 +38,6 @@ const state = {
       comments: null,
     },
     {
-      id: 2,
       name: 'Gary',
       date: new Date().toISOString().substr(0, 10),
       start_time: '10:00',
@@ -46,7 +46,6 @@ const state = {
       comments: null,
     },
     {
-      id: 3,
       name: 'Ben',
       date: '2021-04-20',
       start_time: '13:00',
@@ -56,7 +55,6 @@ const state = {
       comments: null,
     },
     {
-      id: 4,
       name: 'Baz',
       date: new Date().toISOString().substr(0, 10),
       start_time: new Date().toISOString().substr(11, 5),
@@ -65,7 +63,6 @@ const state = {
       comments: null,
     },
     {
-      id: 4,
       name: 'John',
       date: '2021-04-20',
       start_time: '13:00',
@@ -74,7 +71,6 @@ const state = {
       comments: null,
     },
     {
-      id: 4,
       name: 'McMuffin',
       date: '2021-04-20',
       start_time: '20:00',
@@ -83,7 +79,6 @@ const state = {
       comments: null,
     },
     {
-      id: 7,
       name: 'McMuffin',
       date: '2021-04-21',
       start_time: '13:00',
@@ -92,7 +87,6 @@ const state = {
       comments: null,
     },
     {
-      id: 7,
       name: 'Shawarsha',
       date: '2021-04-21',
       start_time: '13:00',
@@ -157,4 +151,6 @@ const state = {
 export default new Vuex.Store({
   state,
   getters,
+  actions,
+  mutations,
 });

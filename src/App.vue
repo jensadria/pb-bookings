@@ -22,10 +22,20 @@
           <!-- START TIME PICKER -->
           <v-row>
             <v-col>
-              <v-select :items="times" label="Start Time" filled></v-select>
+              <v-select
+                :items="times"
+                label="Start Time"
+                filled
+                v-model="startTime"
+              ></v-select>
             </v-col>
             <v-col>
-              <v-select :items="times" label="End Time" filled></v-select>
+              <v-select
+                :items="times"
+                label="End Time"
+                filled
+                v-model="endTime"
+              ></v-select>
             </v-col>
           </v-row>
           <!-- END TIME PICKER -->
@@ -80,6 +90,7 @@
             rows="2"
             no-resize
             filled
+            v-model="comments"
           ></v-textarea>
           <v-card-actions
             ><v-btn elevation="2" rounded @click="addBooking"
@@ -121,6 +132,7 @@ export default {
     tableNr: [],
     startTime: null,
     endTime: null,
+    comments: '',
   }),
   computed: {
     formattedDate() {
@@ -147,13 +159,16 @@ export default {
   methods: {
     addBooking() {
       const newBooking = {
+        date: this.picker,
         name: this.name,
         phoneNr: this.phoneNr,
         startTime: this.startTime,
         endTime: this.endTime,
-        tableNr: this.tableNr,
+        table: this.tableNr,
       };
       console.log(newBooking);
+
+      this.$store.dispatch('addBooking', newBooking);
     },
   },
 };

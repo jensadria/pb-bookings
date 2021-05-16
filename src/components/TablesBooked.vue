@@ -8,7 +8,7 @@
         elevation="2"
         class="pa-3 ma-3 blue lighten-4"
         v-for="booking in todaysBookingsForTable"
-        :key="booking"
+        :key="booking.id"
         ><div class="flex d-flex">
           <div
             class="flex-grow-1
