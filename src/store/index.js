@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
+import getters from './getters.js';
+
 const state = {
   tableTypes: [
     { nr: 1, game: 'Snooker' },
@@ -154,4 +156,5 @@ const state = {
 
 export default new Vuex.Store({
   state,
+  getters,
 });

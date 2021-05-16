@@ -9,7 +9,11 @@
         ></v-date-picker>
         <v-divider></v-divider>
         <form action="submit">
-          <v-text-field label="Name" hide-details="auto"></v-text-field>
+          <v-text-field
+            label="Name"
+            hide-details="auto"
+            v-model="name"
+          ></v-text-field>
           <v-text-field
             v-model="phoneNr"
             label="Phone Number"
@@ -40,6 +44,7 @@
               <v-btn value="3">3</v-btn>
               <v-btn value="4">4</v-btn>
               <v-btn value="5">5</v-btn>
+              <v-btn value="5">Any</v-btn>
             </v-btn-toggle>
             <p>Pool</p>
             <v-btn-toggle
@@ -66,12 +71,22 @@
               <v-btn value="21">21</v-btn>
               <v-btn value="22">22</v-btn>
               <v-btn value="23">23</v-btn>
+              <v-btn value="Any">Any</v-btn>
             </v-btn-toggle>
           </div>
+          <v-textarea
+            name="comments"
+            label="Comments"
+            rows="2"
+            no-resize
+            filled
+          ></v-textarea>
+          <v-card-actions
+            ><v-btn elevation="2" rounded @click="addBooking"
+              >New Booking</v-btn
+            ></v-card-actions
+          >
         </form>
-        <v-card-actions
-          ><v-btn elevation="2" rounded>New Booking</v-btn></v-card-actions
-        >
       </v-card>
 
       <v-card class="mx-3 flex-grow-1">
@@ -103,16 +118,9 @@ export default {
     picker: new Date().toISOString().substr(0, 10),
     name: '',
     phoneNr: '',
-    chooseGame: null,
     tableNr: [],
-    emailRules: [
-      (v) => !!v || 'E-mail is required',
-      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-    ],
     startTime: null,
     endTime: null,
-    menu1: false,
-    menu2: false,
   }),
   computed: {
     formattedDate() {
@@ -129,14 +137,23 @@ export default {
 
       return [...new Set(arrayOfbookedTables)];
     },
-    test() {
-      return this.$store.state.test;
-    },
     bookings() {
-      return this.$store.state.bookings;
+      return this.$store.getters.getBookings;
     },
     times() {
-      return this.$store.state.times;
+      return this.$store.getters.getTimes;
+    },
+  },
+  methods: {
+    addBooking() {
+      const newBooking = {
+        name: this.name,
+        phoneNr: this.phoneNr,
+        startTime: this.startTime,
+        endTime: this.endTime,
+        tableNr: this.tableNr,
+      };
+      console.log(newBooking);
     },
   },
 };
