@@ -171,6 +171,9 @@ export default {
       this.$store.dispatch('addBooking', newBooking);
     },
   },
+  created() {
+    this.$store.dispatch('loadBookings');
+  },
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="2">
+  <v-col cols="auto">
     <v-card elevation="5" class="pb-1 ma-2">
       <v-card-title class="red darken-2 white--text pa-1"
         >Table {{ table }} - {{ gameType }}</v-card-title
@@ -17,8 +17,8 @@
             {{ booking.name }}
           </div>
           <div>
-            {{ booking.start_time }} {{ booking.end_time ? '-' : '' }}
-            {{ booking.end_time }}
+            {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
+            {{ booking.endTime }}
           </div>
         </div>
       </v-card>

@@ -15,8 +15,35 @@ export default {
     firebase
       .database()
       .ref('bookings')
-      .push(booking);
-
-    context.commit('addBooking', booking);
+      .push(booking)
+      .then((data) => {
+        const key = data.key;
+        context.commit('addBooking', { ...booking, id: key });
+      })
+      .catch((error) => console.log(error));
+  },
+  loadBookings(context) {
+    firebase
+      .database()
+      .ref('bookings')
+      .once('value')
+      .then((data) => {
+        const bookings = [];
+        const obj = data.val();
+        for (let key in obj) {
+          bookings.push({
+            id: key,
+            date: obj[key].date,
+            name: obj[key].name,
+            phoneNr: obj[key].phoneNr,
+            startTime: obj[key].startTime,
+            endTime: obj[key].endTime,
+            table: obj[key].table,
+          });
+        }
+        console.log(bookings);
+        context.commit('loadBookings', bookings);
+      })
+      .catch((error) => console.log(error));
   },
 };
