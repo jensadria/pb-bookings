@@ -9,16 +9,8 @@
         ></v-date-picker>
         <v-divider></v-divider>
         <form action="submit">
-          <v-text-field
-            label="Name"
-            hide-details="auto"
-            v-model="name"
-          ></v-text-field>
-          <v-text-field
-            v-model="phoneNr"
-            label="Phone Number"
-            required
-          ></v-text-field>
+          <v-text-field v-model="name" label="Name" required></v-text-field>
+          <v-text-field v-model="phoneNr" label="Phone Number"></v-text-field>
           <!-- START TIME PICKER -->
           <v-row>
             <v-col>
@@ -92,6 +84,9 @@
             filled
             v-model="comments"
           ></v-textarea>
+          <v-alert type="error" v-if="!formIsValid"
+            >Please enter at least Name, Start Time and one Table</v-alert
+          >
           <v-card-actions
             ><v-btn elevation="2" rounded @click="addBooking"
               >New Booking</v-btn
@@ -130,9 +125,10 @@ export default {
     name: '',
     phoneNr: '',
     tableNr: [],
-    startTime: null,
-    endTime: null,
+    startTime: '',
+    endTime: '',
     comments: '',
+    formIsValid: true,
   }),
   computed: {
     formattedDate() {
@@ -157,7 +153,21 @@ export default {
     },
   },
   methods: {
+    clearValidity() {
+      this.formIsValid = true;
+    },
+    validateForm() {
+      this.formIsValid = true;
+
+      if (this.name === '') this.formIsValid = false;
+      if (this.startTime === '') this.formIsValid = false;
+      if (this.tableNr.length == 0) this.formIsValid = false;
+
+      if (!this.formIsValid) setTimeout(this.clearValidity, 3000);
+    },
     addBooking() {
+      this.validateForm();
+
       const newBooking = {
         date: this.picker,
         name: this.name,

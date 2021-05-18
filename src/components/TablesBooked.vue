@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="auto">
+  <v-col cols="auto" lg="3" md="6">
     <v-card elevation="5" class="pb-1 ma-2">
       <v-card-title class="red darken-2 white--text pa-1"
         >Table {{ table }} - {{ gameType }}</v-card-title
