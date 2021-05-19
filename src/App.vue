@@ -149,7 +149,16 @@ export default {
       return this.$store.getters.getBookings;
     },
     times() {
-      return this.$store.getters.getTimes;
+      //   return this.$store.getters.getTimes;
+
+      const times = [];
+      for (let i = 10; i <= 21; i++) {
+        for (let j = 0; j < 60; j += 15) {
+          times.push(`${i}:${j}`);
+        }
+      }
+
+      return times;
     },
   },
   methods: {
