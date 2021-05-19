@@ -99,7 +99,7 @@
         <v-card-title> Bookings for {{ formattedDate }} </v-card-title>
         <v-row>
           <tables-booked
-            class="flex pa-2"
+            class="flex pa-2 mx-3"
             v-for="table in tablesBooked"
             :key="table"
             :table="table"
@@ -160,13 +160,17 @@ export default {
       this.formIsValid = true;
 
       if (this.name === '') this.formIsValid = false;
-      if (this.startTime === '') this.formIsValid = false;
+      if (this.startTime === '' || this.startTime === 'None')
+        this.formIsValid = false;
       if (this.tableNr.length == 0) this.formIsValid = false;
-
-      if (!this.formIsValid) setTimeout(this.clearValidity, 3000);
     },
     addBooking() {
       this.validateForm();
+
+      if (!this.formIsValid) {
+        setTimeout(this.clearValidity, 3000);
+        return;
+      }
 
       const newBooking = {
         date: this.picker,
