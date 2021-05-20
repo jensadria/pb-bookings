@@ -166,6 +166,15 @@ export default {
     clearValidity() {
       this.formIsValid = true;
     },
+    clearForm() {
+      this.name = '';
+      this.phoneNr = '';
+      this.tableNr = [];
+      this.startTime = '';
+      this.endTime = '';
+      this.comments = '';
+      this.formIsValid = true;
+    },
     validateForm() {
       this.formIsValid = true;
 
@@ -178,7 +187,7 @@ export default {
       this.validateForm();
 
       if (!this.formIsValid) {
-        setTimeout(this.clearValidity, 3000);
+        setTimeout(this.clearValidity, 2000);
         return;
       }
 
@@ -194,6 +203,8 @@ export default {
       console.log(newBooking);
 
       this.$store.dispatch('addBooking', newBooking);
+
+      this.clearForm();
     },
   },
   created() {
