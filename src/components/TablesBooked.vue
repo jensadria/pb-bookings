@@ -10,16 +10,17 @@
         v-for="booking in todaysBookingsForTable"
         :key="booking.id"
         ><div class="flex d-flex">
-          <div
-            class="flex-grow-1
-"
-          >
+          <div class="flex-grow-1 font-weight-bold">
             {{ booking.name }}
           </div>
           <div>
             {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
             {{ booking.endTime }}
           </div>
+        </div>
+        <div v-if="booking.comments">
+          <v-divider class="my-2"></v-divider>
+          <div class="font-italic">{{ booking.comments }}</div>
         </div>
       </v-card>
     </v-card>

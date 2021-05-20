@@ -149,15 +149,16 @@ export default {
       return this.$store.getters.getBookings;
     },
     times() {
-      //   return this.$store.getters.getTimes;
-
       const times = [];
       for (let i = 10; i <= 21; i++) {
         for (let j = 0; j < 60; j += 15) {
-          times.push(`${i}:${j}`);
+          // Fix the single digit zeros
+          const minutes = j < 10 ? j + '0' : j;
+          times.push(`${i}:${minutes}`);
         }
       }
 
+      times.unshift('None');
       return times;
     },
   },
@@ -188,6 +189,7 @@ export default {
         startTime: this.startTime,
         endTime: this.endTime,
         table: this.tableNr,
+        comments: this.comments,
       };
       console.log(newBooking);
 

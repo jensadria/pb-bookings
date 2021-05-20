@@ -10,6 +10,7 @@ export default {
       startTime: payload.startTime,
       endTime: payload.endTime,
       table: payload.table,
+      comments: payload.comments,
     };
 
     firebase
@@ -39,6 +40,7 @@ export default {
             startTime: obj[key].startTime,
             endTime: obj[key].endTime,
             table: obj[key].table,
+            comments: obj[key].comments,
           });
         }
         console.log(bookings);
