@@ -1,4 +1,5 @@
 <template>
+  <!-- Standard Non-Edit Mode -->
   <v-col cols="auto" lg="3" md="6">
     <v-card elevation="5" class="pb-1 ma-2">
       <v-card-title class="red darken-2 white--text pa-1"
@@ -9,7 +10,8 @@
         class="pa-3 ma-3 blue lighten-4"
         v-for="booking in todaysBookingsForTable"
         :key="booking.id"
-        ><div class="flex d-flex">
+      >
+        <div class="flex d-flex">
           <div class="flex-grow-1 font-weight-bold">
             {{ booking.name }}
           </div>
@@ -17,6 +19,10 @@
             {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
             {{ booking.endTime }}
           </div>
+
+          <v-icon right class="edit-booking" @click="enterEditMode">
+            mdi-pencil-circle-outline
+          </v-icon>
         </div>
         <div v-if="booking.comments">
           <v-divider class="my-2"></v-divider>
@@ -48,4 +54,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.edit-booking {
+  cursor: pointer;
+}
+.edit-booking:hover {
+  cursor: pointer;
+  color: rgb(25, 118, 210);
+}
+</style>
