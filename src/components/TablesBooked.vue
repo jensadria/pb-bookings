@@ -20,9 +20,7 @@
             {{ booking.endTime }}
           </div>
 
-          <v-icon right class="edit-booking" @click="enterEditMode">
-            mdi-pencil-circle-outline
-          </v-icon>
+          <edit-dialog :booking="booking"></edit-dialog>
         </div>
         <div v-if="booking.comments">
           <v-divider class="my-2"></v-divider>
@@ -34,7 +32,10 @@
 </template>
 
 <script>
+import EditDialog from '../components/EditDialog.vue';
+
 export default {
+  components: { EditDialog },
   props: ['table', 'bookings', 'today'],
 
   computed: {
