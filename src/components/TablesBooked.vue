@@ -1,34 +1,40 @@
 <template>
-  <!-- Standard Non-Edit Mode -->
-  <v-col cols="3" lg="3" md="6">
-    <v-card elevation="5" class="pb-1 ma-2">
-      <v-card-title class="red darken-2 white--text pa-1"
-        >Table {{ table }} - {{ gameType }}</v-card-title
-      >
-      <v-card
-        elevation="2"
-        class="pa-3 ma-3 blue lighten-4"
-        v-for="booking in todaysBookingsForTable"
-        :key="booking.id"
-      >
-        <div class="flex d-flex">
-          <div class="flex-grow-1 font-weight-bold">
-            {{ booking.name }}
-          </div>
-          <div>
-            {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
-            {{ booking.endTime }}
-          </div>
+  <!-- <v-col :cols="flex"> -->
+  <v-card
+    elevation="5"
+    class="pb-1 ma-2"
+    max-width="250px"
+    min-width="250px"
+    height="fit-content"
+  >
+    <v-card-title class="red darken-2 white--text pa-1"
+      >Table {{ table }} - {{ gameType }}</v-card-title
+    >
+    <v-card
+      elevation="2"
+      class="pa-3 ma-3 blue lighten-4"
+      v-for="booking in todaysBookingsForTable"
+      :key="booking.id"
+      height="auto"
+    >
+      <div class="flex d-flex">
+        <div class="flex-grow-1 font-weight-bold">
+          {{ booking.name }}
+        </div>
+        <div>
+          {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
+          {{ booking.endTime }}
+        </div>
 
-          <edit-dialog :booking="booking"></edit-dialog>
-        </div>
-        <div v-if="booking.comments">
-          <v-divider class="my-2"></v-divider>
-          <div class="font-italic">{{ booking.comments }}</div>
-        </div>
-      </v-card>
+        <edit-dialog :booking="booking"></edit-dialog>
+      </div>
+      <div v-if="booking.comments">
+        <v-divider class="my-2"></v-divider>
+        <div class="font-italic">{{ booking.comments }}</div>
+      </div>
     </v-card>
-  </v-col>
+  </v-card>
+  <!-- </v-col> -->
 </template>
 
 <script>

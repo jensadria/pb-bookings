@@ -112,20 +112,20 @@
         ></v-date-picker>
       </v-card>
 
-      <v-card class="mx-3 flex-grow-1" elevation="4">
+      <v-card class="mx-3 flex-grow-1" elevation="4" width="auto">
         <v-card-title class="text-h4 ">
           Bookings for {{ formattedDate }}
         </v-card-title>
-        <v-row>
+        <v-container class="d-flex flex-row flex-wrap">
           <tables-booked
-            class="flex pa-2 mx-3"
+            class="flex"
             v-for="table in tablesBooked"
             :key="table"
             :table="table"
             :bookings="bookings"
             :today="picker"
           ></tables-booked>
-        </v-row>
+        </v-container>
       </v-card>
     </v-container>
   </v-app>
