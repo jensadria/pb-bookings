@@ -113,10 +113,25 @@
       </v-card>
 
       <v-card class="mx-3 flex-grow-1" elevation="4" width="auto">
-        <v-card-title class="text-h4 ">
+        <v-card-title class="text-h4 d-flex">
           Bookings for {{ formattedDate }}
+          <v-btn-toggle
+            class="flex-wrap ml-15"
+            v-model="viewMode"
+            tile
+            color="deep-blue accent-3"
+            mandatory
+            rounded
+          >
+            <v-btn value="tables">View By Table</v-btn>
+            <v-btn value="person">View By Customer</v-btn>
+          </v-btn-toggle>
         </v-card-title>
-        <v-container class="d-flex flex-row flex-wrap">
+
+        <v-container
+          class="d-flex flex-row flex-wrap"
+          v-if="viewMode === 'tables'"
+        >
           <tables-booked
             class="flex"
             v-for="table in tablesBooked"
@@ -148,6 +163,7 @@ export default {
     endTime: '',
     comments: '',
     formIsValid: true,
+    viewMode: 'table',
   }),
   computed: {
     formattedDate() {
