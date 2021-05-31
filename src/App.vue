@@ -124,7 +124,7 @@
             rounded
           >
             <v-btn value="tables">View By Table</v-btn>
-            <v-btn value="person">View By Customer</v-btn>
+            <v-btn value="customers">View By Customer</v-btn>
           </v-btn-toggle>
         </v-card-title>
 
@@ -141,6 +141,20 @@
             :today="picker"
           ></tables-booked>
         </v-container>
+        <v-container
+          class="d-flex flex-row flex-wrap"
+          v-if="viewMode === 'customers'"
+        >
+          <customers-booked
+            class="flex"
+            v-for="customer in customersBooked"
+            :key="customer"
+            :customer="customer"
+            :bookings="bookings"
+            :today="picker"
+          >
+          </customers-booked>
+        </v-container>
       </v-card>
     </v-container>
   </v-app>
@@ -150,10 +164,11 @@
 import { format } from 'date-fns';
 
 import TablesBooked from './components/TablesBooked.vue';
+import CustomersBooked from './components/CustomersBooked.vue';
 
 export default {
   name: 'App',
-  components: { TablesBooked },
+  components: { TablesBooked, CustomersBooked },
   data: () => ({
     picker: new Date().toISOString().substr(0, 10),
     name: '',
@@ -179,6 +194,13 @@ export default {
         .flat();
 
       return [...new Set(arrayOfbookedTables)];
+    },
+    customersBooked() {
+      let arrayOfBookedCustomers = this.bookings
+        .filter((booking) => booking.date === this.picker)
+        .map((booking) => booking.name);
+
+      return [...new Set(arrayOfBookedCustomers)];
     },
     bookings() {
       return this.$store.getters.getBookings;
