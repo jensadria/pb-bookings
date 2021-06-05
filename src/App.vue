@@ -113,7 +113,7 @@
       </v-card>
 
       <v-card class="mx-3 flex-grow-1" elevation="4" width="auto">
-        <v-card-title class="text-h4 d-flex">
+        <v-card-title class="text-h3 d-flex">
           Bookings for {{ formattedDate }}
           <v-btn-toggle
             class="flex-wrap ml-15"
@@ -129,7 +129,7 @@
         </v-card-title>
 
         <v-container
-          class="d-flex flex-row flex-wrap"
+          class="d-flex flex-column flex-wrap"
           v-if="viewMode === 'tables'"
         >
           <tables-booked
@@ -142,7 +142,7 @@
           ></tables-booked>
         </v-container>
         <v-container
-          class="d-flex flex-row flex-wrap"
+          class="d-flex flex-column flex-wrap"
           v-if="viewMode === 'customers'"
         >
           <customers-booked

@@ -1,13 +1,31 @@
 <template>
   <!-- <v-col :cols="flex"> -->
-  <v-card
-    elevation="5"
-    class="pb-1 ma-2"
-    max-width="250px"
-    min-width="250px"
-    height="fit-content"
-  >
-    <v-card-title class="red darken-2 white--text pa-1"
+  <v-card elevation="5" class="ma-2 d-flex flex-wrap">
+    <v-card
+      class="pa-2 red darken-2 white--text pa-1"
+      min-width="10%"
+      height="auto"
+    >
+      Table {{ table }} <br />
+      {{ gameType }}
+    </v-card>
+    <div class="bookings">
+      <v-card
+        class="d-flex ma-2"
+        width="auto"
+        v-for="booking in todaysBookingsForTable"
+        :key="booking.id"
+        elevation="3"
+        ><div class="pa-2" width="50%">{{ booking.name }}</div>
+        <div class="pa-2" width="50%">
+          {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
+          {{ booking.endTime }}
+        </div></v-card
+      >
+    </div>
+  </v-card>
+
+  <!-- <v-card-title class="red darken-2 white--text pa-1"
       >Table {{ table }} - {{ gameType }}</v-card-title
     >
     <v-card
@@ -32,16 +50,15 @@
         <v-divider class="my-2"></v-divider>
         <div class="font-italic">{{ booking.comments }}</div>
       </div>
-    </v-card>
-  </v-card>
+    </v-card> -->
   <!-- </v-col> -->
 </template>
 
 <script>
-import EditDialog from '../components/EditDialog.vue';
+// import EditDialog from '../components/EditDialog.vue';
 
 export default {
-  components: { EditDialog },
+  //   components: { EditDialog },
   props: ['table', 'bookings', 'today'],
 
   computed: {
@@ -68,5 +85,9 @@ export default {
 .edit-booking:hover {
   cursor: pointer;
   color: rgb(25, 118, 210);
+}
+
+.bookings {
+  width: 50%;
 }
 </style>

@@ -8,13 +8,15 @@
   >
     <div v-for="booking in todaysBookingsForCustomers" :key="booking.id">
       <v-card-title class="red darken-2 white--text pa-1"
-        >{{ customer }} - {{ booking.startTime }}
-        {{ booking.endTime ? '-' : '' }} {{ booking.endTime }}</v-card-title
-      >
+        >{{ customer }} -
+      </v-card-title>
       <v-card elevation="2" class="pa-3 ma-3 blue lighten-4" height="auto">
         <div>
-          <div></div>
           Tables:
+          <div>
+            {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
+            {{ booking.endTime }}
+          </div>
           <span v-for="table in booking.table" :key="table">{{ table }}</span>
           <edit-dialog :booking="booking"></edit-dialog>
         </div>
