@@ -1,27 +1,30 @@
 <template>
   <!-- <v-col :cols="flex"> -->
-  <v-card elevation="5" class="ma-2 d-flex flex-wrap">
-    <v-card
-      class="pa-2 red darken-2 white--text pa-1"
-      min-width="10%"
-      height="auto"
-    >
-      Table {{ table }} <br />
+  <v-card elevation="5" class="ma-2 mb-6 d-flex">
+    <v-card class="pa-2 red darken-2 white--text" min-width="10%" height="auto">
+      <span class="text-h2">{{ table }}</span>
       {{ gameType }}
     </v-card>
-    <div class="bookings">
+    <div class="bookings blue lighten-4">
       <v-card
         class="d-flex ma-2"
         width="auto"
         v-for="booking in todaysBookingsForTable"
         :key="booking.id"
         elevation="3"
-        ><div class="pa-2" width="50%">{{ booking.name }}</div>
-        <div class="pa-2" width="50%">
+        ><div class="pa-2 booking-name font-weight-black">
+          {{ booking.name }}
+        </div>
+        <div class="pa-2 booking-time font-weight-black">
           {{ booking.startTime }} {{ booking.endTime ? '-' : '' }}
           {{ booking.endTime }}
-        </div></v-card
-      >
+        </div>
+
+        <div class="pa-2 booking-phone">{{ booking.phoneNr }}</div>
+        <div class="pa-2 booking-comments font-italic">
+          {{ booking.comments }}
+        </div>
+      </v-card>
     </div>
   </v-card>
 
@@ -88,6 +91,20 @@ export default {
 }
 
 .bookings {
-  width: 50%;
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 100%;
+}
+
+.booking-name,
+.booking-time,
+.booking-phone {
+  flex: 1;
+}
+
+.booking-comments {
+  flex: 3;
 }
 </style>

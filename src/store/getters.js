@@ -5,4 +5,7 @@ export default {
   getTimes(state) {
     return state.times;
   },
+  getTodaysDate(state) {
+    return state.picker;
+  },
 };

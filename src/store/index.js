@@ -7,6 +7,7 @@ import actions from './actions.js';
 import mutations from './mutations.js';
 
 const state = {
+  picker: new Date().toISOString().substr(0, 10),
   tableTypes: [
     { nr: 1, game: 'Snooker' },
     { nr: 2, game: 'Snooker' },
