@@ -1,18 +1,18 @@
 <template>
   <!-- <v-col :cols="flex"> -->
-  <v-card elevation="5" class="ma-2 mb-6 d-flex">
+  <v-card elevation="5" class="ma-2 mb-6 d-flex test">
     <v-card class="pa-2 red darken-2 white--text" min-width="10%" height="auto">
-      <span class="text-h2">{{ table }}</span>
+      <span class="text-h3 font-weight-bold">{{ table }}</span>
       {{ gameType }}
     </v-card>
-    <div class="bookings blue lighten-4">
+    <div class="bookings blue lighten-4 pt-1">
       <v-card
-        class="d-flex ma-2"
-        width="auto"
         v-for="booking in todaysBookingsForTable"
         :key="booking.id"
-        elevation="3"
-        ><div class="pa-2 booking-name font-weight-black">
+        class="d-flex mb-1 mx-1 "
+        width="auto"
+        elevation="2"
+        ><div class="pa-2 booking-name font-weight-black ">
           {{ booking.name }}
         </div>
         <div class="pa-2 booking-time font-weight-black">
@@ -24,6 +24,7 @@
         <div class="pa-2 booking-comments font-italic">
           {{ booking.comments }}
         </div>
+        <edit-dialog :booking="booking" class="edit-button"></edit-dialog>
       </v-card>
     </div>
   </v-card>
@@ -58,10 +59,10 @@
 </template>
 
 <script>
-// import EditDialog from '../components/EditDialog.vue';
+import EditDialog from '../components/EditDialog.vue';
 
 export default {
-  //   components: { EditDialog },
+  components: { EditDialog },
   props: ['table', 'bookings', 'today'],
 
   computed: {
@@ -69,7 +70,7 @@ export default {
       return this.bookings
         .filter((booking) => booking.date === this.today)
         .filter((booking) => booking.table.includes(this.table))
-        .sort((a, b) => a.start_time - b.start_time);
+        .sort((a, b) => a.startTime - b.startTime);
     },
     gameType() {
       const tableTypes = this.$store.state.tableTypes;
@@ -92,9 +93,9 @@ export default {
 
 .bookings {
   display: flex;
-  align-content: flex-start;
-  justify-content: space-evenly;
   flex-direction: column;
+  /* align-items: top; */
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -105,6 +106,12 @@ export default {
 }
 
 .booking-comments {
-  flex: 3;
+  flex: 4;
+}
+
+.edit-button {
+  flex: 0.3;
+  display: flex;
+  align-items: center;
 }
 </style>
